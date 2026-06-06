@@ -169,24 +169,6 @@ export const experience: Company[] = [
     ],
   },
   {
-    company: 'Self-Employed',
-    duration: '2024',
-    initials: 'SE',
-    accent: '#6366f1',
-    roles: [
-      {
-        title: 'Freelance Mobile App Developer',
-        period: '2024',
-        points: [
-          'Developed a cross-platform mobile app using React Native and the MERN stack for a client.',
-          'Implemented end-to-end features including authentication, REST APIs, and dynamic UI rendering.',
-          'Handled requirement gathering, development, and delivery independently.',
-        ],
-        skills: ['React Native', 'MERN', 'REST APIs'],
-      },
-    ],
-  },
-  {
     company: 'Matrimonial Platform (Passion Project)',
     duration: 'Jun 2020 – Jun 2021',
     initials: 'MP',
@@ -250,6 +232,18 @@ export const projects: Project[] = [
       'Optimised render performance for large datasets.',
     ],
     tech: ['JSXGraph', 'React', 'TypeScript', 'Canvas'],
+  },
+  {
+    name: 'Cross-Platform Mobile App (Freelance)',
+    blurb:
+      'A freelance cross-platform mobile application built end-to-end with React Native and the MERN stack for a client.',
+    points: [
+      'Built a cross-platform mobile app with React Native backed by a MERN (MongoDB, Express, React, Node.js) stack.',
+      'Implemented end-to-end features: authentication, REST APIs, and dynamic UI rendering.',
+      'Optimised performance for a smooth experience across devices.',
+      'Handled requirement gathering, development, and delivery independently.',
+    ],
+    tech: ['React Native', 'MongoDB', 'Express', 'Node.js', 'REST APIs'],
   },
 ]
 
