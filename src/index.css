@@ -806,7 +806,51 @@ ul {
 }
 
 .xp-company__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1.2rem;
+}
+
+.company-logo {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.6);
+}
+
+.company-logo--img {
+  background: #fff;
+  padding: 6px;
+  overflow: hidden;
+}
+
+.company-logo--img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Skill / tech icons inside chips and badges */
+.skill-icon {
+  flex-shrink: 0;
+  font-size: 1.05em;
+}
+
+.skill-card__tags li,
+.project-card__tech li,
+.xp-role__skills li,
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
 }
 
 .xp-company__name {

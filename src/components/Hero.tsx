@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { profile, stats } from '../data'
 import { useTilt } from '../useTilt'
+import SkillIcon from '../skillIcons'
 
 const photoSrc = `${import.meta.env.BASE_URL}tejas.jpg`
 
@@ -62,8 +63,14 @@ export default function Hero() {
                 <span className="hero__photo-fallback">TS</span>
               )}
             </div>
-            <span className="hero__badge hero__badge--1">⚛ React</span>
-            <span className="hero__badge hero__badge--2">TS TypeScript</span>
+            <span className="hero__badge hero__badge--1">
+              <SkillIcon name="React" className="skill-icon" />
+              React
+            </span>
+            <span className="hero__badge hero__badge--2">
+              <SkillIcon name="TypeScript" className="skill-icon" />
+              TypeScript
+            </span>
             <span className="hero__badge hero__badge--3">5+ yrs</span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { skills } from '../data'
 import Section from './Section'
 import { useSpotlight } from '../spotlight'
+import SkillIcon from '../skillIcons'
 
 export default function Skills() {
   const gridRef = useSpotlight<HTMLDivElement>()
@@ -13,7 +14,10 @@ export default function Skills() {
             <h3 className="skill-card__title">{group.category}</h3>
             <ul className="skill-card__tags">
               {group.items.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>
+                  <SkillIcon name={item} className="skill-icon" />
+                  {item}
+                </li>
               ))}
             </ul>
           </div>

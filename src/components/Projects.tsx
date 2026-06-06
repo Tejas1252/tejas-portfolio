@@ -1,6 +1,7 @@
 import { projects } from '../data'
 import Section from './Section'
 import { useSpotlight } from '../spotlight'
+import SkillIcon from '../skillIcons'
 
 export default function Projects() {
   const gridRef = useSpotlight<HTMLDivElement>()
@@ -22,7 +23,10 @@ export default function Projects() {
             <div className="project-card__footer">
               <ul className="project-card__tech">
                 {p.tech.map((t) => (
-                  <li key={t}>{t}</li>
+                  <li key={t}>
+                    <SkillIcon name={t} className="skill-icon" />
+                    {t}
+                  </li>
                 ))}
               </ul>
               {(p.live || p.github) && (

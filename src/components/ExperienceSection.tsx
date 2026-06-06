@@ -2,6 +2,8 @@ import { experience } from '../data'
 import Section from './Section'
 import { useSpotlight } from '../spotlight'
 import { roleDuration, companyDuration } from '../duration'
+import SkillIcon from '../skillIcons'
+import CompanyLogo from './CompanyLogo'
 
 export default function ExperienceSection() {
   const timelineRef = useSpotlight<HTMLDivElement>()
@@ -17,10 +19,18 @@ export default function ExperienceSection() {
           return (
           <div key={company.company} className="xp-company">
             <div className="xp-company__head">
-              <h3 className="xp-company__name">{company.company}</h3>
-              <p className="xp-company__meta">
-                {[totalDuration, company.location].filter(Boolean).join(' · ')}
-              </p>
+              <CompanyLogo
+                name={company.company}
+                logo={company.logo}
+                initials={company.initials}
+                accent={company.accent}
+              />
+              <div>
+                <h3 className="xp-company__name">{company.company}</h3>
+                <p className="xp-company__meta">
+                  {[totalDuration, company.location].filter(Boolean).join(' · ')}
+                </p>
+              </div>
             </div>
 
             <div className="xp-roles">
@@ -58,7 +68,10 @@ export default function ExperienceSection() {
                     {role.skills && (
                       <ul className="xp-role__skills">
                         {role.skills.map((s) => (
-                          <li key={s}>{s}</li>
+                          <li key={s}>
+                            <SkillIcon name={s} className="skill-icon" />
+                            {s}
+                          </li>
                         ))}
                       </ul>
                     )}

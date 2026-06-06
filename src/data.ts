@@ -84,12 +84,19 @@ export type Company = {
   duration?: string
   location?: string
   roles: Role[]
+  /** Optional path to a real logo in /public; falls back to a monogram. */
+  logo?: string
+  /** Monogram override + tile colour. */
+  initials?: string
+  accent?: string
 }
 
 export const experience: Company[] = [
   {
     company: 'Curriculum Associates',
     duration: '5 yrs 1 mo',
+    initials: 'CA',
+    accent: '#1a4fa0',
     roles: [
       {
         title: 'Software Engineer II',
@@ -135,6 +142,8 @@ export const experience: Company[] = [
     company: 'Mitr Learning & Media Pvt. Ltd.',
     duration: '3 yrs 11 mos',
     location: 'Mumbai, Maharashtra, India',
+    initials: 'ML',
+    accent: '#1f7ae0',
     roles: [
       {
         title: 'Frontend Developer',
@@ -162,6 +171,8 @@ export const experience: Company[] = [
   {
     company: 'Self-Employed',
     duration: '2024',
+    initials: 'SE',
+    accent: '#6366f1',
     roles: [
       {
         title: 'Freelance Mobile App Developer',
@@ -178,6 +189,8 @@ export const experience: Company[] = [
   {
     company: 'Matrimonial Platform (Passion Project)',
     duration: 'Jun 2020 – Jun 2021',
+    initials: 'MP',
+    accent: '#db2777',
     roles: [
       {
         title: 'Full-stack Developer',
