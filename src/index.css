@@ -128,6 +128,8 @@ ul {
 }
 
 .btn--primary {
+  position: relative;
+  overflow: hidden;
   background: var(--grad-soft);
   color: #fff;
   box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.7);
@@ -161,6 +163,7 @@ ul {
   z-index: 50;
   transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
   border-bottom: 1px solid transparent;
+  animation: navDrop 0.55s ease both;
 }
 
 .nav--scrolled {
@@ -348,9 +351,17 @@ ul {
 
 .hero__role-grad {
   background: var(--grad);
+  background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 220% center;
+  }
 }
 
 .hero__tagline {
@@ -624,11 +635,19 @@ ul {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
   color: var(--text-dim);
-  transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition: transform 0.16s ease, color 0.18s ease, border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .skill-card:hover .skill-card__tags li {
   color: var(--text);
+}
+
+.skill-card__tags li:hover {
+  transform: translateY(-2px);
+  color: var(--text);
+  border-color: rgba(129, 140, 248, 0.6);
+  background: rgba(129, 140, 248, 0.12);
 }
 
 /* ============================================================
@@ -769,7 +788,7 @@ ul {
 .project-card:hover {
   transform: translateY(-6px);
   border-color: rgba(129, 140, 248, 0.5);
-  box-shadow: var(--shadow);
+  box-shadow: 0 26px 60px -26px rgba(99, 102, 241, 0.55);
 }
 
 .project-card:hover::before {
@@ -1214,6 +1233,112 @@ ul {
     page-break-inside: avoid;
   }
 }
+
+/* ============================================================
+   Enhancements: scroll progress, spotlight, shine, shimmer
+   ============================================================ */
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 60;
+  will-change: transform;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.6);
+}
+
+/* Cursor-following spotlight glow on cards */
+.spot {
+  position: relative;
+  overflow: hidden;
+}
+
+.spot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--mx, -200px) var(--my, -200px),
+    rgba(129, 140, 248, 0.18),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spot:hover::after {
+  opacity: 1;
+}
+
+/* Shine sweep on primary buttons (positioning merged into .btn--primary) */
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.btn--primary:hover::after {
+  left: 150%;
+}
+
+/* Nav slide-in keyframes (animation merged into .nav) */
+@keyframes navDrop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Email button states */
+.email-btn.is-copied {
+  background: linear-gradient(120deg, #10b981, #06b6d4);
+  box-shadow: 0 12px 30px -10px rgba(16, 185, 129, 0.7);
+}
+
+.email-btn__icon {
+  display: inline-flex;
+}
+
+/* Visually-hidden live region for screen-reader feedback */
+.email-btn__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* (Project-card hover glow + skill-chip micro-interactions are merged
+   into their base rules above.) */
 
 /* ============================================================
    Responsive

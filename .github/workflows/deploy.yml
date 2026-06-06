@@ -5,6 +5,11 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Opt JS actions into the Node 24 runtime ahead of the June 2026 default
+# switch, silencing the Node 20 deprecation warnings.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 # Allow the workflow to publish to Pages
 permissions:
   contents: read
@@ -24,7 +29,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci

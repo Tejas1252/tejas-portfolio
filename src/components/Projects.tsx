@@ -1,12 +1,15 @@
 import { projects } from '../data'
 import Section from './Section'
+import { useSpotlight } from '../spotlight'
 
 export default function Projects() {
+  const gridRef = useSpotlight<HTMLDivElement>()
+
   return (
     <Section id="projects" eyebrow="Selected Work" title="Projects">
-      <div className="projects__grid">
+      <div className="projects__grid" ref={gridRef}>
         {projects.map((p) => (
-          <article key={p.name} className="project-card">
+          <article key={p.name} className="project-card spot">
             <div className="project-card__body">
               <h3 className="project-card__title">{p.name}</h3>
               <p className="project-card__blurb">{p.blurb}</p>
