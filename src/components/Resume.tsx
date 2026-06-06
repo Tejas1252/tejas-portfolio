@@ -59,19 +59,32 @@ export default function Resume() {
 
         <section className="resume__section">
           <h2>Experience</h2>
-          {experience.map((job) => (
-            <div key={job.role + job.company} className="resume__job">
+          {experience.map((company) => (
+            <div key={company.company} className="resume__company">
               <div className="resume__job-head">
-                <strong>
-                  {job.role} — {job.company}
-                </strong>
-                <span>{job.period}</span>
+                <strong>{company.company}</strong>
+                <span>
+                  {[company.duration, company.location].filter(Boolean).join(' · ')}
+                </span>
               </div>
-              <ul>
-                {job.points.map((p, i) => (
-                  <li key={i}>{p}</li>
-                ))}
-              </ul>
+              {company.roles.map((role) => (
+                <div key={role.title + role.period} className="resume__job">
+                  <div className="resume__job-head">
+                    <strong>{role.title}</strong>
+                    <span>
+                      {role.period}
+                      {role.duration ? ` · ${role.duration}` : ''}
+                    </span>
+                  </div>
+                  {role.points && (
+                    <ul>
+                      {role.points.map((p, i) => (
+                        <li key={i}>{p}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
             </div>
           ))}
         </section>

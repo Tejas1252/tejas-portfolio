@@ -69,62 +69,125 @@ export const skills: SkillGroup[] = [
   },
 ]
 
-export type Experience = {
-  role: string
-  company: string
+export type Role = {
+  title: string
+  employmentType?: string
   period: string
-  points: string[]
+  duration?: string
+  location?: string
+  points?: string[]
+  skills?: string[]
 }
 
-export const experience: Experience[] = [
+export type Company = {
+  company: string
+  duration?: string
+  location?: string
+  roles: Role[]
+}
+
+export const experience: Company[] = [
   {
-    role: 'Software Engineer II',
     company: 'Curriculum Associates',
-    period: 'Jan 2025 – Present',
-    points: [
-      'Promoted to Software Engineer II, recognising consistent high-quality delivery and impact on frontend systems.',
-      'Owned and developed custom Bar Graph and Table components used across the application.',
-      'Optimised Bar Graph performance, reducing loading time by ~50% and improving user experience.',
-      'Built and maintained scalable UI components using React and TypeScript, improving performance and consistency.',
-      'Implemented Redux-Saga for managing asynchronous flows and improving state handling.',
-      'Leveraged Cursor AI to accelerate development, debugging, and code optimisation workflows.',
-      'Automated system testing workflows using Selenium and Vitest, improving release reliability.',
-      'Optimised monorepo automation (tsc --watch, pnpm, nodemon), reducing build overhead by ~50%.',
+    duration: '5 yrs 1 mo',
+    roles: [
+      {
+        title: 'Software Engineer II',
+        employmentType: 'Full-time',
+        period: 'Jan 2025 – Present',
+        duration: '1 yr 6 mos',
+        location: 'Bengaluru, Karnataka, India · Hybrid',
+        points: [
+          'Developed responsive, user-friendly UI components in React and TypeScript for educational applications used by students and educators.',
+          'Implemented Redux-Saga for efficient asynchronous state management.',
+          'Owned custom Bar Graph and Table components used across the app; optimised Bar Graph performance, cutting load time by ~50%.',
+          'Leveraged Cursor AI to accelerate development and automated system testing with Selenium and Vitest.',
+          'Optimised monorepo automation (tsc --watch, pnpm, nodemon), reducing build overhead by ~50%.',
+        ],
+        skills: ['React', 'TypeScript', 'Redux-Saga', 'Vitest', 'Selenium'],
+      },
+      {
+        title: 'Software Engineer I',
+        employmentType: 'Full-time',
+        period: 'Apr 2025 – Apr 2026',
+        duration: '1 yr 1 mo',
+        location: 'Bengaluru, Karnataka, India · Hybrid',
+        points: [
+          'Built and maintained scalable, reusable UI components aligned with Figma designs.',
+          'Collaborated with design, QA, and product teams to ship high-quality user experiences.',
+        ],
+        skills: ['Redux-Saga', 'Communication', 'React', 'TypeScript', 'SCSS'],
+      },
+      {
+        title: 'Frontend Developer',
+        period: 'Jun 2021 – Dec 2024',
+        duration: '3 yrs 7 mos',
+        points: [
+          'Engineered a front-end solution using TypeScript, React.js, Node.js, and Redux — eBooks and Interactive Editions for an e-learning platform serving 300,000+ users.',
+          'Developed a quiz-based learning system, increasing student engagement and completion rates.',
+          'Built interactive data visualisations (bar graphs, pie charts) using JSXGraph for educators.',
+          'Improved accessibility to WCAG with screen-reader support (VoiceOver, JAWS, NVDA).',
+        ],
+      },
     ],
   },
   {
-    role: 'Frontend Developer',
-    company: 'Mitr Learning & Media Pvt. Ltd (Curriculum Associates)',
-    period: 'Jun 2021 – Dec 2024',
-    points: [
-      'Engineered a scalable e-learning platform using React, TypeScript, and Redux, serving 300K+ users.',
-      'Built a quiz-based learning system, increasing student engagement and completion rates.',
-      'Developed the i-Ready Connect platform used by 300K+ students with seamless cross-device compatibility.',
-      'Built interactive data visualisations (bar graphs, pie charts) using JSXGraph for educators.',
-      'Improved accessibility using semantic HTML and WCAG guidelines (VoiceOver, JAWS, NVDA).',
-      'Integrated CI/CD workflows and code quality tools (Jenkins, SonarQube) for reliable deployment.',
-      'Configured backend integrations and CORS using Node.js and Express.',
+    company: 'Mitr Learning & Media Pvt. Ltd.',
+    duration: '3 yrs 11 mos',
+    location: 'Mumbai, Maharashtra, India',
+    roles: [
+      {
+        title: 'Frontend Developer',
+        employmentType: 'Full-time',
+        period: 'Sep 2021 – Apr 2025',
+        duration: '3 yrs 8 mos',
+        location: 'Remote',
+        points: [
+          'Developed the i-Ready Connect platform used by 300K+ students with seamless cross-device compatibility.',
+          'Integrated CI/CD and code-quality tooling (Jenkins, SonarQube); configured Node.js/Express backend integrations and CORS.',
+        ],
+        skills: ['JavaScript', 'React', 'Software Development', 'CI/CD'],
+      },
+      {
+        title: 'Graduate Engineering Trainee',
+        period: 'Jun 2021 – Aug 2021',
+        duration: '3 mos',
+        points: [
+          'Ramped up on the codebase and contributed to UI features during the graduate program.',
+        ],
+        skills: ['JavaScript'],
+      },
     ],
   },
   {
-    role: 'Freelance Mobile App Developer',
     company: 'Self-Employed',
-    period: '2024',
-    points: [
-      'Developed a cross-platform mobile app using React Native and the MERN stack for a client.',
-      'Implemented end-to-end features including authentication, REST APIs, and dynamic UI rendering.',
-      'Optimised application performance for a smooth experience across devices.',
-      'Handled requirement gathering, development, and delivery independently.',
+    duration: '2024',
+    roles: [
+      {
+        title: 'Freelance Mobile App Developer',
+        period: '2024',
+        points: [
+          'Developed a cross-platform mobile app using React Native and the MERN stack for a client.',
+          'Implemented end-to-end features including authentication, REST APIs, and dynamic UI rendering.',
+          'Handled requirement gathering, development, and delivery independently.',
+        ],
+        skills: ['React Native', 'MERN', 'REST APIs'],
+      },
     ],
   },
   {
-    role: 'Full-stack Developer (Passion Project)',
-    company: 'Matrimonial Platform',
-    period: 'Jun 2020 – Jun 2021',
-    points: [
-      'Built a full-stack matrimonial website using React, Node.js, Redux, TypeScript, and GraphQL.',
-      'Created smooth animations with GSAP to enhance the visual appeal of the website.',
-      'Used MongoDB for scalable data storage and Express.js for robust API development.',
+    company: 'Matrimonial Platform (Passion Project)',
+    duration: 'Jun 2020 – Jun 2021',
+    roles: [
+      {
+        title: 'Full-stack Developer',
+        period: 'Jun 2020 – Jun 2021',
+        points: [
+          'Built a full-stack matrimonial website using React, Node.js, Redux, TypeScript, and GraphQL.',
+          'Created smooth animations with GSAP and used MongoDB for scalable storage.',
+        ],
+        skills: ['React', 'Node.js', 'GraphQL', 'MongoDB', 'GSAP'],
+      },
     ],
   },
 ]

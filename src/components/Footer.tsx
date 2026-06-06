@@ -1,6 +1,9 @@
 import { profile } from '../data'
+import { useEmailAction } from '../useEmailAction'
 
 export default function Footer() {
+  const { copied, trigger } = useEmailAction()
+
   return (
     <footer className="footer">
       <p>
@@ -13,7 +16,9 @@ export default function Footer() {
         <a href={profile.linkedin} target="_blank" rel="noreferrer">
           LinkedIn
         </a>
-        <a href={`mailto:${profile.email}`}>Email</a>
+        <button type="button" className="footer__email" onClick={trigger}>
+          {copied ? 'Copied ✓' : 'Email'}
+        </button>
         <a href="#top" className="footer__top">
           Top ↑
         </a>

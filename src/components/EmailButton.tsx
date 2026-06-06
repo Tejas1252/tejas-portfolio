@@ -1,32 +1,18 @@
-import { useState } from 'react'
 import { profile } from '../data'
+import { useEmailAction } from '../useEmailAction'
 
 type EmailButtonProps = {
   className?: string
 }
 
 export default function EmailButton({ className = '' }: Readonly<EmailButtonProps>) {
-  const [copied, setCopied] = useState(false)
-
-  const handleClick = async () => {
-    // 1) Copy the address so the action always succeeds, even when no
-    //    desktop mail client is registered to handle mailto: links.
-    try {
-      await navigator.clipboard.writeText(profile.email)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 2200)
-    } catch {
-      // Clipboard API may be blocked (e.g. non-secure context) — ignore.
-    }
-    // 2) Still try to open the user's mail client.
-    window.location.href = `mailto:${profile.email}`
-  }
+  const { copied, trigger } = useEmailAction()
 
   return (
     <button
       type="button"
       className={`btn btn--primary email-btn ${copied ? 'is-copied' : ''} ${className}`}
-      onClick={handleClick}
+      onClick={trigger}
     >
       <span className="email-btn__icon" aria-hidden="true">
         {copied ? (
