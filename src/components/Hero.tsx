@@ -5,6 +5,15 @@ import SkillIcon from '../skillIcons'
 
 const photoSrc = `${import.meta.env.BASE_URL}tejas.jpg`
 
+const badges: { label: string; icon: string | null }[] = [
+  { label: 'React', icon: 'React' },
+  { label: 'TypeScript', icon: 'TypeScript' },
+  { label: '5+ yrs', icon: null },
+  { label: 'AI', icon: 'AI' },
+  { label: 'MERN', icon: 'MERN' },
+  { label: 'Node.js', icon: 'Node.js' },
+]
+
 export default function Hero() {
   const tiltRef = useTilt<HTMLDivElement>()
   const [photoOk, setPhotoOk] = useState(true)
@@ -63,15 +72,12 @@ export default function Hero() {
                 <span className="hero__photo-fallback">TS</span>
               )}
             </div>
-            <span className="hero__badge hero__badge--1">
-              <SkillIcon name="React" className="skill-icon" />
-              React
-            </span>
-            <span className="hero__badge hero__badge--2">
-              <SkillIcon name="TypeScript" className="skill-icon" />
-              TypeScript
-            </span>
-            <span className="hero__badge hero__badge--3">5+ yrs</span>
+            {badges.map((b, i) => (
+              <span key={b.label} className={`hero__badge hero__badge--${i + 1}`}>
+                {b.icon && <SkillIcon name={b.icon} className="skill-icon" />}
+                {b.label}
+              </span>
+            ))}
           </div>
         </div>
       </div>

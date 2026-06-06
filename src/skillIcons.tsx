@@ -44,6 +44,7 @@ import {
   TbCode,
   TbMessageDots,
   TbInfinity,
+  TbSparkles,
 } from 'react-icons/tb'
 
 type IconDef = { Icon: IconType; color?: string }
@@ -98,6 +99,7 @@ const ICONS: Record<string, IconDef> = {
   MERN: { Icon: TbCode },
   MongoDB: { Icon: SiMongodb, color: '#47A248' },
   GSAP: { Icon: SiGreensock, color: '#0AE448' },
+  AI: { Icon: TbSparkles },
 }
 
 const FALLBACK: IconDef = { Icon: TbCode }
