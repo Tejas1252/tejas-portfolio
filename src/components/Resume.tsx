@@ -5,6 +5,7 @@ import {
   projects,
   education,
 } from '../data'
+import { roleDuration, companyDuration } from '../duration'
 
 export default function Resume() {
   return (
@@ -64,16 +65,26 @@ export default function Resume() {
               <div className="resume__job-head">
                 <strong>{company.company}</strong>
                 <span>
-                  {[company.duration, company.location].filter(Boolean).join(' · ')}
+                  {[
+                    companyDuration(
+                      company.roles.map((r) => r.period),
+                      company.duration,
+                    ),
+                    company.location,
+                  ]
+                    .filter(Boolean)
+                    .join(' · ')}
                 </span>
               </div>
-              {company.roles.map((role) => (
+              {company.roles.map((role) => {
+                const dur = roleDuration(role.period, role.duration)
+                return (
                 <div key={role.title + role.period} className="resume__job">
                   <div className="resume__job-head">
                     <strong>{role.title}</strong>
                     <span>
                       {role.period}
-                      {role.duration ? ` · ${role.duration}` : ''}
+                      {dur ? ` · ${dur}` : ''}
                     </span>
                   </div>
                   {role.points && (
@@ -84,7 +95,8 @@ export default function Resume() {
                     </ul>
                   )}
                 </div>
-              ))}
+                )
+              })}
             </div>
           ))}
         </section>

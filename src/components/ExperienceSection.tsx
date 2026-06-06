@@ -1,6 +1,7 @@
 import { experience } from '../data'
 import Section from './Section'
 import { useSpotlight } from '../spotlight'
+import { roleDuration, companyDuration } from '../duration'
 
 export default function ExperienceSection() {
   const timelineRef = useSpotlight<HTMLDivElement>()
@@ -8,12 +9,17 @@ export default function ExperienceSection() {
   return (
     <Section id="experience" eyebrow="Journey" title="Experience">
       <div className="timeline" ref={timelineRef}>
-        {experience.map((company) => (
+        {experience.map((company) => {
+          const totalDuration = companyDuration(
+            company.roles.map((r) => r.period),
+            company.duration,
+          )
+          return (
           <div key={company.company} className="xp-company">
             <div className="xp-company__head">
               <h3 className="xp-company__name">{company.company}</h3>
               <p className="xp-company__meta">
-                {[company.duration, company.location].filter(Boolean).join(' · ')}
+                {[totalDuration, company.location].filter(Boolean).join(' · ')}
               </p>
             </div>
 
@@ -26,7 +32,10 @@ export default function ExperienceSection() {
                       <h4 className="xp-role__title">{role.title}</h4>
                       <span className="xp-role__period">
                         {role.period}
-                        {role.duration ? ` · ${role.duration}` : ''}
+                        {(() => {
+                          const d = roleDuration(role.period, role.duration)
+                          return d ? ` · ${d}` : ''
+                        })()}
                       </span>
                     </div>
 
@@ -58,7 +67,8 @@ export default function ExperienceSection() {
               ))}
             </div>
           </div>
-        ))}
+          )
+        })}
       </div>
     </Section>
   )
