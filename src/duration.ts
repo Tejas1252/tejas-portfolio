@@ -44,6 +44,18 @@ const isPresent = (period: string) => /present/i.test(period)
 const startOf = (period: string) => parseMonthYear(period.split(/[–-]/)[0])
 
 /**
+ * Completed years of experience since a career-start date (e.g. "Jun 2021").
+ * Computed live, so headline experience figures never go stale.
+ */
+export function experienceYears(start: string): number {
+  const s = parseMonthYear(start)
+  if (!s) return 0
+  const now = new Date()
+  const months = (now.getFullYear() - s.year) * 12 + (now.getMonth() - s.month)
+  return Math.max(0, Math.floor(months / 12))
+}
+
+/**
  * Returns a role's duration. If the role is ongoing ("… – Present"), the
  * duration is computed live from the start date so it never goes stale;
  * otherwise the provided static value is used.

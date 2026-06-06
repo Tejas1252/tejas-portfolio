@@ -1,4 +1,4 @@
-import { education, activities } from '../data'
+import { education, activities, yearsExperience } from '../data'
 import Section from './Section'
 
 export default function About() {
@@ -9,9 +9,10 @@ export default function About() {
           <h3 className="about__subtitle">What I do</h3>
           <p className="about__text">
             I build scalable, accessible, and high-performance interfaces with React
-            and TypeScript. Over the past 5 years I've shipped e-learning products used
-            by 300K+ learners — owning reusable component systems, taming complex async
-            state with Redux-Saga, and squeezing out meaningful performance wins.
+            and TypeScript. Over the past {yearsExperience}+ years I've shipped
+            e-learning products used by 300K+ learners — owning reusable component
+            systems, taming complex async state with Redux-Saga, and squeezing out
+            meaningful performance wins.
           </p>
           <p className="about__text">
             I care about clean architecture, accessibility (WCAG, screen readers), and

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { profile, stats } from '../data'
+import { profile, stats, yearsExperience } from '../data'
 import { useTilt } from '../useTilt'
 import SkillIcon from '../skillIcons'
 
@@ -8,7 +8,7 @@ const photoSrc = `${import.meta.env.BASE_URL}tejas.jpg`
 const badges: { label: string; icon: string | null }[] = [
   { label: 'React', icon: 'React' },
   { label: 'TypeScript', icon: 'TypeScript' },
-  { label: '5+ yrs', icon: null },
+  { label: `${yearsExperience}+ yrs`, icon: null },
   { label: 'AI', icon: 'AI' },
   { label: 'MERN', icon: 'MERN' },
   { label: 'Node.js', icon: 'Node.js' },

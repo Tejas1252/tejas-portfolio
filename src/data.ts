@@ -1,18 +1,25 @@
+import { experienceYears } from './duration'
+
+/** First professional role start — drives all "years of experience" figures. */
+export const careerStart = 'Jun 2021'
+
+/** Completed years of experience, computed live so it never goes stale. */
+export const yearsExperience = experienceYears(careerStart)
+
 export const profile = {
   name: 'Tejas Shinde',
   title: 'Frontend Engineer',
-  tagline: 'React · TypeScript · Redux · 5 Years Experience',
+  tagline: `React · TypeScript · Redux · ${yearsExperience}+ Years Experience`,
   phone: '+91 8080110604',
   email: 'tejas.shinde.frontend@gmail.com',
   location: 'Mumbai / Bangalore',
   github: 'https://github.com/Tejas1252',
   linkedin: 'https://www.linkedin.com/in/tejas-shinde-284894189',
-  summary:
-    'Frontend Engineer with 5 years of experience building scalable, high-performance web applications using React and TypeScript. Proven track record of delivering user-centric solutions for e-learning platforms serving 300K+ users. Strong expertise in state management (Redux, Redux-Saga), performance optimisation, and reusable component architecture. Actively improving productivity using AI tools and contributing to quality through testing and automation.',
+  summary: `Frontend Engineer with ${yearsExperience}+ years of experience building scalable, high-performance web applications using React and TypeScript. Proven track record of delivering user-centric solutions for e-learning platforms serving 300K+ users. Strong expertise in state management (Redux, Redux-Saga), performance optimisation, and reusable component architecture. Actively improving productivity using AI tools and contributing to quality through testing and automation.`,
 }
 
 export const stats = [
-  { value: '5+', label: 'Years Experience' },
+  { value: `${yearsExperience}+`, label: 'Years Experience' },
   { value: '300K+', label: 'Users Served' },
   { value: '~50%', label: 'Faster Load Times' },
   { value: '100%', label: 'Ownership Mindset' },
